@@ -35,7 +35,7 @@ public class PublishingDTO {
         this.description = description;
     }
 
-    public String getTypePublishing() {
+	public String getTypePublishing() {
         return typePublishing;
     }
 
