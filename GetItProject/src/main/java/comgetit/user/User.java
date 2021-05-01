@@ -1,22 +1,24 @@
 package comgetit.user;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "Users")
 public class User {
-    @Id
-	@Column
-	private Long id;
+	@Id
+    @Column
+    private Long id;
  
- 	@Column
+    @Column
     private String firstname;
  	
     @Column
