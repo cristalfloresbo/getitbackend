@@ -54,8 +54,8 @@ public class Publication {
         this.created = created;
     }
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return id.toString();
     }
 
     public PublicationType getPublicationType() {

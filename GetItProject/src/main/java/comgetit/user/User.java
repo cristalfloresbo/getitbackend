@@ -77,8 +77,8 @@ public class User {
     protected User() {
     }
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return id.toString();
     }
 
     public String getFirstname() {

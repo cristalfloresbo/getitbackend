@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 public class PublicationDTO {
 
     @NotNull
-    private Long adId;
+    private String adId;
 
     @NotBlank
     private String type;
@@ -51,7 +51,7 @@ public class PublicationDTO {
             publication.getUser().getAddress());
     }
 
-    public Long getAdId() {
+    public String getAdId() {
         return adId;
     }
 
