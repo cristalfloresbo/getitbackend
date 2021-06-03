@@ -11,6 +11,7 @@ import comgetit.workarea.WorkAreaRepository;
 import comgetit.workarea.exception.WorkAreNotFoundException;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +67,9 @@ public class PublicationService {
         return publicationRepository.findAllByWorkAreaOrderByCreatedDesc(workArea)
             .stream().map(PublicationDTO::new)
             .collect(Collectors.toList());
+    }
+    
+    public Optional<Publication> getPublication(long id) {
+        return publicationRepository.findById(id);
     }
 }
