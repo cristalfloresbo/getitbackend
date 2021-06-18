@@ -1,8 +1,5 @@
 package comgetit.user;
 
-import comgetit.role.Role;
-import comgetit.role.RoleRepository;
-import comgetit.role.exception.RoleNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -13,6 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import comgetit.role.Role;
+import comgetit.role.RoleRepository;
 import comgetit.user.dto.UserDTO;
 import comgetit.user.dto.UsersDTO;
 import comgetit.workarea.WorkArea;
