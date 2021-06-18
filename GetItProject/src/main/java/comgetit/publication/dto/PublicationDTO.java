@@ -2,6 +2,7 @@ package comgetit.publication.dto;
 
 import comgetit.publication.Publication;
 import comgetit.user.dto.UserDTO;
+import comgetit.user.dto.UsersDTO;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -34,7 +35,7 @@ public class PublicationDTO {
     private String description;
 
     @NotNull
-    private UserDTO user;
+    private UsersDTO user;
 
     private Date createdAt;
 
@@ -48,11 +49,11 @@ public class PublicationDTO {
         this.description = publication.getDescription();
         this.image = new String(publication.getImage(), StandardCharsets.UTF_8);
         this.createdAt = publication.getCreated();
-        this.user = new UserDTO(publication.getUser().getFirstname(),
+        this.user = new UsersDTO(publication.getUser().getId().toString(), publication.getUser().getFirstname(),
             publication.getUser().getLastname(), publication.getUser().getPhone(),
             publication.getUser().getBirthdate(), publication.getUser().getAddress(), publication.getUser().getWorkArea().getId(),
             publication.getUser().getScore(), publication.getUser().getEmail(),
-            publication.getUser().getAddress(), publication.getUser().getImage());
+            publication.getUser().getImage().getBytes());
     }
 
     public Long getAdId() {
@@ -83,7 +84,7 @@ public class PublicationDTO {
         return description;
     }
 
-    public UserDTO getUser() {
+    public UsersDTO getUser() {
         return user;
     }
 
