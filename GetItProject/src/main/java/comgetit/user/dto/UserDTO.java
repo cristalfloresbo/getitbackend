@@ -34,7 +34,7 @@ public class UserDTO {
     private String address;
     
     @NotNull
-    private Long workAreaId;
+    private String[] workAreaId;
     
     private int score;
 
@@ -50,7 +50,7 @@ public class UserDTO {
     private String image;
 
     public UserDTO(String firstname, String lastname, String phone, Date birthdate, 
-                   String address, Long workAreaId, int score, String email, String password, String image) {
+                   String address, String[] workAreaId, int score, String email, String password, String image) {
         this.firstname = firstname;
         this.lastname = lastname;
 	    this.phone = phone;
@@ -103,11 +103,11 @@ public class UserDTO {
         this.address = address;
     }
 
-    public Long getWorkAreaId() {
+    public String[] getWorkAreaId() {
         return workAreaId;
     }
 
-    public void setWorkArea(Long workAreaId) {
+    public void setWorkArea(String[] workAreaId) {
         this.workAreaId = workAreaId;
     }
 

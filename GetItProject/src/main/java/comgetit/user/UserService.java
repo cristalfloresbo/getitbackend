@@ -42,7 +42,7 @@ public class UserService implements UserDetailsService {
 	    WorkArea workAreaId = workAreaRepository.findById(userDTO.getWorkAreaId())
             .orElseThrow(WorkAreNotFoundException::new);
 	    Role role = roleRepository.findByName(ADMIN)
-            .orElseThrow(() -> new RoleNotFoundException(ADMIN));
+            .orElsseThrow(() -> new RoleNotFoundException(ADMIN));
         User user = new User(UUID.randomUUID().getMostSignificantBits(),
                              userDTO.getFirstname(), userDTO.getLastname(),
                              userDTO.getPhone(), userDTO.getBirthdate(),
