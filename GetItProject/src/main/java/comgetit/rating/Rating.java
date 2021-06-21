@@ -32,8 +32,8 @@ public class Rating {
 
     protected Rating(){}
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return id.toString();
     }
 
     public Long getRatedUser() {
@@ -46,7 +46,7 @@ public class Rating {
     
     public int getScore() {
         return score;
-    } 
+    }
     
     public void setRatedUser(Long ratedUser) {
 		this.ratedUser = ratedUser;

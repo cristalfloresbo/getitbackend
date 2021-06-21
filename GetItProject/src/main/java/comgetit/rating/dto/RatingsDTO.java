@@ -6,7 +6,7 @@ import comgetit.rating.Rating;
 
 public class RatingsDTO {
 	
-	private Long id;
+	private String id;
 	
 	@NotNull
     private Long ratedUser;
@@ -24,12 +24,12 @@ public class RatingsDTO {
         this.score = rating.getScore();
     }
 
-    public Long getId() {
+    public String getId() {
     	return id;
     }
    
-    public Long getRatedUser() {
-        return ratedUser;
+    public String getRatedUser() {
+        return ratedUser.toString();
     }
 
     public Long getRaterUser() {
