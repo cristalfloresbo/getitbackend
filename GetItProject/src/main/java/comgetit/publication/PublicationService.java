@@ -56,7 +56,7 @@ public class PublicationService {
     }
 
     public List<PublicationDTO> getAllPublications() {
-        return publicationRepository.findAll().stream()
+        return publicationRepository.findAllByOrderByCreatedDesc().stream()
             .map(PublicationDTO::new)
             .collect(Collectors.toList());
     }

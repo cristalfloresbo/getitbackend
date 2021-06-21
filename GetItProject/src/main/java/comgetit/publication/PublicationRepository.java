@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PublicationRepository extends JpaRepository<Publication, Long> {
-
+	
+	List<Publication> findAllByOrderByCreatedDesc();
     List<Publication> findAllByWorkAreaOrderByCreatedDesc(WorkArea workArea);
 }
