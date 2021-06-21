@@ -43,4 +43,11 @@ public class UserController {
     public Optional<User> getUserById(@PathVariable Long id) {
         return userService.getUser(id);
     }
+    
+    @GetMapping("/available-email/{email}")
+    public boolean getExistenceEmail(@PathVariable String email){
+    	return userService.availableEmail(email);
+    }
+
+
 }

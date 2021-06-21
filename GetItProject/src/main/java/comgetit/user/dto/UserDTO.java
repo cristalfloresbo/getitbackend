@@ -6,7 +6,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -30,10 +29,8 @@ public class UserDTO {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthdate;
     
-    @Size(min = 10, max = 50)
     private String address;
     
-    @NotNull
     private String[] workAreaId;
     
     private int score;
@@ -44,7 +41,6 @@ public class UserDTO {
     private String email;
 
     @NotNull
-    @Size(min = 8, max = 128)
     private String password;
     
     private String image;

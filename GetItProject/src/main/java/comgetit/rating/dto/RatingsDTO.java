@@ -38,6 +38,5 @@ public class RatingsDTO {
     
     public int getScore() {
         return score;
-    } 
-
+    }
 }

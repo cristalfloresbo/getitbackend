@@ -47,4 +47,16 @@ public class Rating {
     public int getScore() {
         return score;
     } 
+    
+    public void setRatedUser(Long ratedUser) {
+		this.ratedUser = ratedUser;
+	}
+
+	public void setRaterUser(Long raterUser) {
+		this.raterUser = raterUser;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
 }
