@@ -34,7 +34,7 @@ public class UserDTO {
     
     private String address;
     
-    private String[] workAreaId;
+    private String[] workAreaIds;
 
     @NotNull
     @Size(max = 50)
@@ -53,7 +53,7 @@ public class UserDTO {
 	    this.phone = phone;
 	    this.birthdate = birthdate;
 	    this.address = address;
-	    this.workAreaId = workAreaId;
+	    this.workAreaIds = workAreaId;
 	    this.email = email;
         this.password = password;
         this.image = image;
@@ -99,12 +99,12 @@ public class UserDTO {
         this.address = address;
     }
 
-    public String[] getWorkAreaId() {
-        return workAreaId;
+    public String[] getWorkAreaIds() {
+        return workAreaIds;
     }
 
-    public void setWorkArea(String[] workAreaId) {
-        this.workAreaId = workAreaId;
+    public void setWorkArea(String[] workAreaIds) {
+        this.workAreaIds = workAreaIds;
     }
 
     public String getEmail() {

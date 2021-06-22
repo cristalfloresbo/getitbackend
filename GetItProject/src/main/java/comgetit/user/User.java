@@ -59,9 +59,9 @@ public class User implements UserDetails {
     				
     		})
     @JoinTable(name = "user_work_area",
-               joinColumns = { @JoinColumn(name= "user_id")},
-               inverseJoinColumns = { @JoinColumn(name = "work_area_id") })
-    private Set<WorkArea> workAreas = new HashSet<>();
+               joinColumns = { @JoinColumn(name= "user_id", nullable = false)},
+               inverseJoinColumns = { @JoinColumn(name = "work_area_id", nullable = false) })
+    private List<WorkArea> workAreas;
 
     @Column
     private String email;
@@ -91,7 +91,7 @@ public class User implements UserDetails {
         this.phone = phone;
         this.birthdate = birthdate;
         this.address = address;
-        this.workAreas = (Set<WorkArea>) workAreas;
+        this.workAreas =  workAreas;
         this.email = email;
         this.password = password;
         this.image = image.getBytes();
@@ -125,8 +125,8 @@ public class User implements UserDetails {
         return address;
     }
 
-    public WorkArea getWorkArea() {
-        return (WorkArea) workAreas;
+    public List<WorkArea> getWorkAreas() {
+        return  workAreas;
     }
 
     public String getEmail() {

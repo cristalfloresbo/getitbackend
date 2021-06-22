@@ -2,10 +2,13 @@ package comgetit.user.dto;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import comgetit.workarea.WorkArea;
 
 public class UsersDTO {
 	
@@ -30,7 +33,7 @@ public class UsersDTO {
     @NotNull
     private String address;
     
-    private Long workAreaId;
+    private List<WorkArea> workAreaId;
    
     @NotNull
     @Size(max = 50)
@@ -39,7 +42,7 @@ public class UsersDTO {
     private String image;
 
     public UsersDTO(String id, String firstname, String lastname, String phone, Date birthdate,
-                    String address, Long workAreaId, String email, byte[] image) {
+                    String address, List<WorkArea> workAreaId, String email, byte[] image) {
         super();
         this.id = id;
         this.firstname = firstname;
@@ -100,11 +103,11 @@ public class UsersDTO {
         this.address = address;
     }
 
-    public Long getWorkAreaId() {
+    public List<WorkArea> getWorkAreaId() {
         return workAreaId;
     }
 
-    public void setWorkAreaId(Long workAreaId) {
+    public void setWorkAreaId(List<WorkArea> workAreaId) {
         this.workAreaId = workAreaId;
     }
     

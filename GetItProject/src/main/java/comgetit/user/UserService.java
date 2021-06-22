@@ -62,7 +62,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll().stream()
             .map(user -> new UsersDTO(user.getId().toString(), user.getFirstname(), 
                  user.getLastname(), user.getPhone(), user.getBirthdate(), 
-                 user.getAddress(), user.getWorkArea().getId(), user.getEmail(),
+                 user.getAddress(), user.getWorkAreas() , user.getEmail(),
                  user.getImage().getBytes()))
                  .collect(Collectors.toList());
     }

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class WorkArea implements Serializable {
 
     @Id
+    @Column
     private Long id;
 
     private String name;
@@ -29,12 +31,11 @@ public class WorkArea implements Serializable {
 
     @ManyToMany(fetch = FetchType.LAZY,
     		cascade = {
-    				CascadeType.PERSIST,
-    				CascadeType.MERGE
-    		},
-    		mappedBy = "workAreas")
+    			CascadeType.PERSIST,
+    			CascadeType.MERGE
+    		}, mappedBy = "workAreas")
     @JsonIgnore
-    private Set<User> users = new HashSet<>();
+    private List<User> users;
 
     protected WorkArea() {
     }
@@ -44,7 +45,7 @@ public class WorkArea implements Serializable {
         this.id = id;
         this.name = name;
         this.publicationList = publicationList;
-        this.users = (Set<User>) users;
+        this.users = users;
     }
 
     public Long getId() {
