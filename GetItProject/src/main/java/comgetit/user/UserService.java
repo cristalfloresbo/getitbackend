@@ -46,7 +46,7 @@ public class UserService implements UserDetailsService {
         User user = new User(UUID.randomUUID().getMostSignificantBits(),
                              userDTO.getFirstname(), userDTO.getLastname(),
                              userDTO.getPhone(), userDTO.getBirthdate(),
-                             userDTO.getAddress(), workAreaId, userDTO.getScore(),
+                             userDTO.getAddress(), workAreaId,
                              userDTO.getEmail(), passwordEncoder.encode(userDTO.getPassword()),
                              userDTO.getImage(), List.of(role));
         return userRepository.save(user);
@@ -56,7 +56,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll().stream()
             .map(user -> new UsersDTO(user.getId().toString(), user.getFirstname(), 
                  user.getLastname(), user.getPhone(), user.getBirthdate(), 
-                 user.getAddress(), user.getWorkArea().getId(), user.getScore(), user.getEmail(),
+                 user.getAddress(), user.getWorkArea().getId(), user.getEmail(),
                  user.getImage().getBytes()))
                  .collect(Collectors.toList());
     }

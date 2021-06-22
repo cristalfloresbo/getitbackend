@@ -51,9 +51,6 @@ public class User implements UserDetails {
 
     @ManyToOne
     private WorkArea workArea;
- 
-    @Column
-    private int score;
 
     @Column
     private String email;
@@ -74,7 +71,7 @@ public class User implements UserDetails {
     private List<Role> authorities;
 
     public User(Long id, String firstname, String lastname, String phone,
-        Date birthdate, String address, WorkArea workArea, int score, String email,
+        Date birthdate, String address, WorkArea workArea, String email,
         String password, String image, List<Role> authorities) {
         super();
         this.id = id;
@@ -84,7 +81,6 @@ public class User implements UserDetails {
         this.birthdate = birthdate;
         this.address = address;
         this.workArea = workArea;
-        this.score = score;
         this.email = email;
         this.password = password;
         this.image = image.getBytes();
@@ -120,10 +116,6 @@ public class User implements UserDetails {
 
     public WorkArea getWorkArea() {
         return workArea;
-    }
-    
-    public int getScore() {
-        return score;
     }
 
     public String getEmail() {
