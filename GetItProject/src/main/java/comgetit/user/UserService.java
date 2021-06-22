@@ -1,5 +1,6 @@
 package comgetit.user;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -37,16 +38,21 @@ public class UserService implements UserDetailsService {
         this.workAreaRepository = workAreaRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
+	
 	public User createUser(final UserDTO userDTO) {
-	    WorkArea workAreaId = workAreaRepository.findById(userDTO.getWorkAreaId())
-            .orElseThrow(WorkAreNotFoundException::new);
-	    Role role = roleRepository.findByName(ADMIN)
-            .orElsseThrow(() -> new RoleNotFoundException(ADMIN));
+		List<WorkArea> workAreas = new ArrayList<>();
+		Role role = roleRepository.findByName(ADMIN)
+	            .orElsseThrow(() -> new RoleNotFoundException(ADMIN));
+	    for (int i=0; i< userDTO.getWorkAreaId().length; i++) {
+	    	WorkArea currentWorkArea = workAreaRepository.findById(Long.parseLong(userDTO.getWorkAreaId()[i]))
+	    			.orElseThrow(WorkAreNotFoundException::new);
+	    	workAreas.add(currentWorkArea);
+	    }
+	    
         User user = new User(UUID.randomUUID().getMostSignificantBits(),
                              userDTO.getFirstname(), userDTO.getLastname(),
                              userDTO.getPhone(), userDTO.getBirthdate(),
-                             userDTO.getAddress(), workAreaId,
+                             userDTO.getAddress(), workAreas,
                              userDTO.getEmail(), passwordEncoder.encode(userDTO.getPassword()),
                              userDTO.getImage(), List.of(role));
         return userRepository.save(user);

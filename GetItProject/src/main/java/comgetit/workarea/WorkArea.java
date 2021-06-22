@@ -3,9 +3,15 @@ package comgetit.workarea;
 import comgetit.publication.Publication;
 import comgetit.user.User;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,9 +27,14 @@ public class WorkArea implements Serializable {
     @JsonIgnore
     private List<Publication> publicationList;
 
-    @OneToMany(mappedBy = "workArea")
+    @ManyToMany(fetch = FetchType.LAZY,
+    		cascade = {
+    				CascadeType.PERSIST,
+    				CascadeType.MERGE
+    		},
+    		mappedBy = "workAreas")
     @JsonIgnore
-    private List<User> users;
+    private Set<User> users = new HashSet<>();
 
     protected WorkArea() {
     }
@@ -33,7 +44,7 @@ public class WorkArea implements Serializable {
         this.id = id;
         this.name = name;
         this.publicationList = publicationList;
-        this.users = users;
+        this.users = (Set<User>) users;
     }
 
     public Long getId() {
@@ -49,6 +60,6 @@ public class WorkArea implements Serializable {
     }
 
     public List<User> getUsers() {
-        return users;
+        return (List<User>) users;
     }
 }

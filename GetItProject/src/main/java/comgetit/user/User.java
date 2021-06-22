@@ -9,7 +9,11 @@ import comgetit.workarea.WorkArea;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,8 +53,15 @@ public class User implements UserDetails {
     @Column
     private String address;
 
-    @ManyToOne
-    private WorkArea workArea;
+    @ManyToMany(fetch = FetchType.LAZY,
+    		cascade = {
+    				CascadeType.ALL,
+    				
+    		})
+    @JoinTable(name = "user_work_area",
+               joinColumns = { @JoinColumn(name= "user_id")},
+               inverseJoinColumns = { @JoinColumn(name = "work_area_id") })
+    private Set<WorkArea> workAreas = new HashSet<>();
 
     @Column
     private String email;
@@ -71,8 +82,8 @@ public class User implements UserDetails {
     private List<Role> authorities;
 
     public User(Long id, String firstname, String lastname, String phone,
-        Date birthdate, String address, WorkArea workArea, String email,
-        String password, String image, List<Role> authorities) {
+        Date birthdate, String address, List<WorkArea> workAreas, String email,
+        String password, String image) {
         super();
         this.id = id;
         this.firstname = firstname;
@@ -80,7 +91,7 @@ public class User implements UserDetails {
         this.phone = phone;
         this.birthdate = birthdate;
         this.address = address;
-        this.workArea = workArea;
+        this.workAreas = (Set<WorkArea>) workAreas;
         this.email = email;
         this.password = password;
         this.image = image.getBytes();
@@ -115,7 +126,7 @@ public class User implements UserDetails {
     }
 
     public WorkArea getWorkArea() {
-        return workArea;
+        return (WorkArea) workAreas;
     }
 
     public String getEmail() {
