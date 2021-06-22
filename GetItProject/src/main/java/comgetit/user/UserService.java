@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import comgetit.role.Role;
 import comgetit.role.RoleRepository;
+import comgetit.role.exception.RoleNotFoundException;
 import comgetit.user.dto.UserDTO;
 import comgetit.user.dto.UsersDTO;
 import comgetit.workarea.WorkArea;
@@ -40,11 +41,11 @@ public class UserService implements UserDetailsService {
     }
 	
 	public User createUser(final UserDTO userDTO) {
-		List<WorkArea> workAreas = new ArrayList<>();
 		Role role = roleRepository.findByName(ADMIN)
-	            .orElsseThrow(() -> new RoleNotFoundException(ADMIN));
-	    for (int i=0; i< userDTO.getWorkAreaId().length; i++) {
-	    	WorkArea currentWorkArea = workAreaRepository.findById(Long.parseLong(userDTO.getWorkAreaId()[i]))
+	            .orElseThrow(() -> new RoleNotFoundException(ADMIN));
+		List<WorkArea> workAreas = new ArrayList<>();
+	    for (int i=0; i< userDTO.getWorkAreaIds().length; i++) {
+	    	WorkArea currentWorkArea = workAreaRepository.findById(Long.parseLong(userDTO.getWorkAreaIds()[i]))
 	    			.orElseThrow(WorkAreNotFoundException::new);
 	    	workAreas.add(currentWorkArea);
 	    }
@@ -78,6 +79,7 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByEmail(username).get();
+    }
     
     public boolean availableEmail(String email) {
     	boolean exist = false;

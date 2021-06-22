@@ -52,8 +52,7 @@ public class PublicationDTO {
         this.user = new UsersDTO(publication.getUser().getId().toString(), publication.getUser().getFirstname(),
             publication.getUser().getLastname(), publication.getUser().getPhone(),
             publication.getUser().getBirthdate(), publication.getUser().getAddress(), publication.getUser().getWorkAreas(),
-            publication.getUser().getEmail(),
-            publication.getUser().getImage().getBytes());
+            publication.getUser().getEmail(), publication.getUser().getImage().getBytes());
     }
 
     public Long getAdId() {

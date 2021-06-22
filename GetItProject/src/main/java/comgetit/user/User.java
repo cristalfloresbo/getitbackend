@@ -83,7 +83,7 @@ public class User implements UserDetails {
 
     public User(Long id, String firstname, String lastname, String phone,
         Date birthdate, String address, List<WorkArea> workAreas, String email,
-        String password, String image) {
+        String password, String image, List<Role> authorities) {
         super();
         this.id = id;
         this.firstname = firstname;
